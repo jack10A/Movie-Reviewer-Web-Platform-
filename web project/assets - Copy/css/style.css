@@ -1,0 +1,691 @@
+
+:root {
+  --bg-color: #f0f2f5; 
+  --text-color: #212529; 
+  --card-bg-color: #ffffff; 
+  --card-text-color: #212529;
+  --input-bg-color: #ffffff;
+  --input-text-color: #495057;
+  --input-border-color: #ced4da;
+  --button-primary-bg: #007bff;
+  --button-primary-text: #ffffff;
+  --button-secondary-bg: #6c757d;
+  --button-secondary-text: #ffffff;
+  --link-color: #007bff;
+  --link-hover-color: #0056b3;
+  --border-color: #dee2e6; 
+  --header-footer-bg: #e9ecef; 
+  --table-header-bg: #e9ecef;
+  --table-border-color: #dee2e6;
+  --nav-link-color: #333; 
+  --nav-link-hover-bg: #e9ecef; 
+  --error-bg: #f8d7da;
+  --error-text: #721c24;
+  --error-border: #f5c6cb;
+  --success-bg: #d4edda;
+  --success-text: #155724;
+  --success-border: #c3e6cb;
+
+  /* Specific for Admin Sidebar */
+  --admin-sidebar-bg: #2c3e50;
+  --admin-sidebar-text: #ecf0f1;
+  --admin-sidebar-link-hover-bg: #3498db;
+  --admin-sidebar-link-active-bg: #3498db;
+  --admin-sidebar-link-hover-text: #ffffff;
+  --admin-sidebar-link-active-text: #ffffff;
+  --admin-sidebar-border: #34495e;
+}
+
+/* ==========================
+   Dark Mode Theme Variables
+   ========================== */
+[data-theme='dark'] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg-color: #1e1e1e;
+  --card-text-color: #e0e0e0;
+  --input-bg-color: #2a2a2a;
+  --input-text-color: #f5f5f5;
+  --input-border-color: #444444;
+  --button-primary-bg: #0d6efd; /* A bit brighter blue for dark mode */
+  --button-primary-text: #ffffff;
+  --button-secondary-bg: #5a6268;
+  --button-secondary-text: #ffffff;
+  --link-color: #6cb2eb; /* Lighter blue for links */
+  --link-hover-color: #8dc9f0;
+  --border-color: #343a40;
+  --header-footer-bg: #23272b; /* Darker for .page-navigation */
+  --table-header-bg: #2c3034;
+  --table-border-color: #454d55;
+  --nav-link-color: #adb5bd; /* Lighter for user-nav in top-bar */
+  --nav-link-hover-bg: #343a40;
+  --error-bg: #58151c;
+  --error-text: #f8d7da;
+  --error-border: #a02933;
+  --success-bg: #144520;
+  --success-text: #d4edda;
+  --success-border: #2e7d32;
+
+  /* Specific for Admin Sidebar in Dark Mode */
+  --admin-sidebar-bg: #1f2937; /* Darker sidebar */
+  --admin-sidebar-text: #d1d5db;
+  --admin-sidebar-link-hover-bg: #3b82f6; /* Brighter blue for hover/active */
+  --admin-sidebar-link-active-bg: #3b82f6;
+  --admin-sidebar-link-hover-text: #ffffff;
+  --admin-sidebar-link-active-text: #ffffff;
+  --admin-sidebar-border: #4b5563;
+}
+
+/* ==========================
+   Global Styles Using Variables
+   ========================== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  line-height: 1.6;
+  /* Apply body padding here if you want it global, or per-page wrappers */
+  /* padding: 20px; remove if main-container or page-specific wrappers handle it */
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.5rem; }
+
+
+/* Input and Textarea Styling */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+textarea,
+select {
+    background-color: var(--input-bg-color);
+    color: var(--input-text-color);
+    border: 1px solid var(--input-border-color);
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.25rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    font-size: 1rem;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+    border-color: var(--button-primary-bg);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Default blueish shadow for light mode */
+    outline: none;
+}
+[data-theme='dark'] input:focus,
+[data-theme='dark'] textarea:focus,
+[data-theme='dark'] select:focus {
+    border-color: var(--link-color);
+    box-shadow: 0 0 0 0.2rem rgba(108, 178, 235, 0.35); /* Lighter shadow for dark mode */
+}
+
+
+/* Button Styling */
+button, .btn, .button-like, .btn-gateway, .back-link {
+    padding: 0.65rem 1rem;
+    border-radius: 0.25rem;
+    color: var(--button-primary-text) !important;
+    background-color: var(--button-primary-bg);
+    border: 1px solid var(--button-primary-bg);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, transform 0.15s ease-out;
+}
+button:hover, .btn:hover, .button-like:hover, .btn-gateway:hover, .back-link:hover {
+    filter: brightness(90%);
+    text-decoration: none;
+    transform: translateY(-1px); /* Subtle lift */
+}
+
+.btn-secondary, .back-link { /* back-link was more specific before, ensure this is intended */
+    background-color: var(--button-secondary-bg);
+    border-color: var(--button-secondary-bg);
+    color: var(--button-secondary-text) !important;
+}
+
+/* Card Styling */
+.card, .login-box, .login-container, .gateway-container, .movie-detail, .filter-section {
+    background-color: var(--card-bg-color);
+    color: var(--card-text-color);
+    padding: 1.5rem;
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+    border: 1px solid var(--border-color);
+    margin-bottom: 1.5rem;
+}
+[data-theme='dark'] .card,
+[data-theme='dark'] .login-box,
+[data-theme='dark'] .login-container,
+[data-theme='dark'] .gateway-container,
+[data-theme='dark'] .movie-detail,
+[data-theme='dark'] .filter-section {
+    box-shadow: 0 0.125rem 0.25rem rgba(255,255,255,0.05); /* Lighter shadow for dark mode */
+}
+
+
+/* Table Styling */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem; /* Default, wrapper may override */
+    background-color: var(--card-bg-color); /* Table itself can use card background */
+}
+.table th, .table td {
+    padding: 0.75rem;
+    border: 1px solid var(--table-border-color);
+    text-align: left;
+    color: var(--card-text-color);
+    vertical-align: top;
+}
+.table thead th { /* Combined with previous .table th for specificity */
+    background-color: var(--table-header-bg);
+    font-weight: 600; /* Bolder */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+    color: var(--text-color); /* Ensure header text uses main theme text color for contrast */
+}
+.table tbody tr:hover {
+    background-color: var(--bg-color); /* Use main body bg for hover for subtle effect */
+}
+[data-theme='dark'] .table tbody tr:hover {
+    background-color: #2a2a2a; /* A slightly lighter dark for hover row */
+}
+
+
+/* Alert/Message Boxes */
+.alert, .message, .error, .success {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+    border: 1px solid transparent;
+}
+.alert-success, .success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-color: var(--success-border);
+}
+.alert-danger, .error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border-color: var(--error-border);
+}
+
+
+/* ==========================
+   Page Specific Base Styles 
+   ========================== */
+
+/* Gateway Page */
+.gateway-container { text-align: center; max-width: 500px; margin: 5vh auto; } /* Centered & sized */
+.gateway-container h1 { margin-bottom: 1rem; font-size: 2rem; }
+.gateway-container p { margin-bottom: 1.5rem; font-size: 1.1rem; }
+.button-group { display: flex; gap: 1rem; justify-content: center; }
+.btn-gateway { font-size: 1.1rem; min-width: 180px; }
+.btn-user { background-color: var(--button-primary-bg); border-color: var(--button-primary-bg); }
+.btn-admin { background-color: #28a745; border-color: #28a745; }
+[data-theme='dark'] .btn-admin { background-color: #20c997; border-color: #20c997; }
+
+
+/* User Login/Register Pages */
+.login-container { max-width: 400px; margin: 5vh auto; text-align: center; }
+.login-container h2 { margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1rem; text-align: left; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: bold; }
+.links { margin-top: 1.5rem; }
+.links a { margin: 0 0.5rem; }
+
+
+/* index.php - Top Bar, Filters, Movie Grid */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--card-bg-color);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky; top: 0; z-index: 1000;
+    
+}
+.user-nav a, .user-nav span { color: var(--text-color); margin-left: 0.75rem; font-weight: normal; }
+.search-bar form { display: flex; align-items: center; }
+.search-bar input[type="search"] { border-radius: 0.25rem 0 0 0.25rem; border-right: none; min-width: 250px; }
+.search-bar button { border-radius: 0 0.25rem 0.25rem 0; /* height already matches due to padding */}
+.search-bar .clear-search-btn { margin-left: 0.75rem; padding: 0.5rem 0.75rem; font-size: 0.9rem; background-color: var(--button-secondary-bg); border-color: var(--button-secondary-bg); }
+
+.main-container { max-width: 1320px; margin: 20px auto; padding: 0 20px; } /* Wrapper for index.php content */
+.page-title { font-size: 1.75rem; color: var(--text-color); margin-bottom: 1.5rem; text-align: center; }
+
+.filter-section h2 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+.genre-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.genre-filters a {
+    padding: 0.5rem 1rem;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease-out;
+}
+.genre-filters a:hover { filter: brightness(90%); transform: translateY(-1px); }
+.genre-filters a.active { background-color: var(--button-primary-bg); color: var(--button-primary-text); border-color: var(--button-primary-bg); }
+.genre-filters a.all { background-color: var(--button-secondary-bg); color: var(--button-secondary-text); border-color: var(--button-secondary-bg); }
+.current-filter-notice { text-align: center; margin-bottom: 1.5rem; font-style: italic; color: var(--text-color); opacity: 0.8; }
+
+.movie-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.5rem; }
+.movie-card {
+    background: var(--card-bg-color);
+    border-radius: 0.375rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    border: 1px solid var(--border-color);
+}
+.movie-card:hover { transform: translateY(-5px); box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.15); }
+[data-theme='dark'] .movie-card:hover { box-shadow: 0 0.5rem 1rem rgba(255,255,255,0.08); }
+
+.movie-card a.image-link { text-decoration: none; color: inherit; display: block; }
+.movie-card img { width: 100%; height: 330px; object-fit: cover; display: block; }
+.movie-card .no-image { height: 330px; background: var(--input-bg-color); display: flex; align-items: center; justify-content: center; color: var(--text-color); opacity: 0.7; font-size: 1rem; }
+.movie-card-content { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; }
+.movie-card-content h3 { margin: 0 0 0.5rem; font-size: 1.15rem; line-height: 1.3; color: var(--card-text-color); }
+.movie-card-content p { margin: 0.25rem 0; font-size: 0.9rem; color: var(--card-text-color); opacity: 0.9; }
+.movie-card-content p strong { font-weight: 600; }
+.no-results { padding: 2rem; text-align: center; font-size: 1.1rem; color: var(--text-color); opacity: 0.8; width: 100%; background-color: var(--card-bg-color); border-radius: 0.25rem; }
+
+
+/* movie.php - Movie Detail Page */
+.movie-detail-page-container { max-width: 900px; margin: 20px auto; padding: 0 15px; } /* Wrapper for movie.php */
+.movie-detail { /* This is already a .card */
+    /* max-width: 900px; margin: 20px auto; */ /* Handled by parent now */
+}
+.movie-detail img { max-width: 100%; border-radius: 0.25rem; margin: 1rem 0; }
+.movie-detail .no-image {
+    height: 300px; background: var(--input-bg-color); display: flex; align-items: center; justify-content: center; border-radius: 0.25rem; margin: 1rem 0;
+    color: var(--text-color); opacity: 0.7;
+}
+.movie-detail h1 { margin-bottom: 0.75rem; }
+.movie-detail p { margin-bottom: 0.75rem; }
+.reviews { margin-top: 2rem; }
+.reviews h2 { margin-bottom: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;}
+.review {
+    padding: 1rem;
+    border: 1px solid var(--border-color); /* Give reviews a border */
+    background-color: var(--bg-color);
+    margin-bottom: 1rem;
+    border-radius: 0.25rem;
+}
+[data-theme='dark'] .review { background-color: #1a1a1a; border-color: var(--border-color); }
+.review:last-child { border-bottom: 1px solid var(--border-color); } /* Keep border for consistency */
+.review strong { color: var(--text-color); font-weight: 600; }
+.review em { color: var(--text-color); opacity: 0.95; display: block; margin-top: 0.25rem; font-style: normal; }
+.review small { color: var(--text-color); opacity: 0.7; font-size: 0.85em; display: block; margin-top: 0.5rem; }
+.page-navigation {
+    margin-bottom: 1.5rem; padding: 0.75rem; background-color: var(--header-footer-bg);
+    border-radius: 0.25rem; border: 1px solid var(--border-color);
+}
+
+/* review.php - Review Form Page */
+.review-form-page { max-width: 800px; margin: 20px auto; padding: 0 15px; }
+.user-nav { /* For review.php top user nav */
+    text-align: right; padding: 0.75rem; margin-bottom: 1.5rem;
+    background-color: var(--card-bg-color); border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+.user-nav strong { font-weight: 600; }
+.form-container { margin-top: 1.5rem; } /* Inside the .card on review.php */
+
+
+/* ==========================
+   Admin Section General Styles (Your existing structure)
+   ========================== */
+.admin-wrapper { display: flex; min-height: 100vh; }
+.admin-sidebar {
+    width: 260px;
+    background-color: var(--admin-sidebar-bg);
+    color: var(--admin-sidebar-text);
+    padding: 1.5rem;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+.admin-sidebar h3 { margin-top: 0; border-bottom: 1px solid var(--admin-sidebar-border); padding-bottom: 1rem; font-size: 1.4rem; }
+.admin-sidebar ul { list-style-type: none; padding: 0; margin-top: 1rem; }
+.admin-sidebar ul li a {
+    display: block;
+    padding: 0.85rem 1rem;
+    color: var(--admin-sidebar-text);
+    text-decoration: none;
+    border-radius: 0.25rem;
+    margin-bottom: 0.3rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-size: 1rem;
+}
+.admin-sidebar ul li a:hover, .admin-sidebar ul li a.active {
+    background-color: var(--admin-sidebar-link-hover-bg);
+    color: var(--admin-sidebar-link-hover-text);
+}
+.admin-sidebar .logout-section { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--admin-sidebar-border); font-size: 0.9rem; }
+.admin-sidebar .logout-section strong { display: block; margin-bottom: 0.25rem; }
+.admin-sidebar .logout-section a { color: #e74c3c; font-weight: bold; }
+[data-theme='dark'] .admin-sidebar .logout-section a { color: #fca5a5; }
+
+
+.admin-main-content {
+    flex-grow: 1;
+    padding: 1.5rem;
+    background-color: var(--bg-color);
+    box-sizing: border-box;
+    overflow-x: hidden; /* Usually better to make tables scrollable than whole content */
+}
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--card-bg-color);
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+}
+.admin-header h1 { margin: 0; font-size: 1.75rem; color: var(--text-color); }
+
+/* ======================================
+   ADMIN DASHBOARD ENHANCEMENTS (New/Refined)
+   ====================================== */
+
+.admin-main-content .quick-actions.card { /* Ensure .card is on the quick-actions div */
+    padding: 1.5rem; /* Standard card padding */
+}
+
+.admin-main-content .quick-actions.card h2 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 1.5rem; /* More space after heading */
+    font-size: 1.4rem;
+    font-weight: 600; /* Slightly bolder */
+    color: var(--text-color);
+}
+
+.admin-main-content .quick-actions .action-button-group {
+    display: grid; /* Use grid for easy alignment and responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive columns */
+    gap: 1rem; /* Space between buttons */
+}
+
+.admin-main-content .quick-actions .action-button {
+    display: flex; /* For aligning icon and text */
+    align-items: center;
+    justify-content: center; /* Center content if icon is small or text is short */
+    padding: 0.85rem 1.25rem; /* Standard padding from .btn */
+    font-size: 1rem; /* Standard font size from .btn */
+    font-weight: 500; /* Slightly bolder than default button text */
+    text-align: left; /* Align text to the left if icons are used */
+    border-radius: 0.375rem; /* More rounded like other cards/buttons */
+    color: var(--button-primary-text) !important; /* Ensure text color from variable */
+    text-decoration: none;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background-color 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.07);
+    border: 1px solid transparent; /* Base border */
+    position: relative; /* For potential pseudo-elements or icons */
+    overflow: hidden; /* For effects */
+}
+
+.admin-main-content .quick-actions .action-button:hover {
+    transform: translateY(-3px) scale(1.02); /* More noticeable hover effect */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    filter: brightness(110%); /* Make it slightly brighter on hover */
+}
+.admin-main-content .quick-actions .action-button:active {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.08);
+}
+
+
+/* Specific button colors - these override the general .btn background */
+.admin-main-content .quick-actions .action-button.reviews {
+    background-color: #e67e22; /* Orange for Reviews */
+    border-color: #e67e22;
+}
+[data-theme='dark'] .admin-main-content .quick-actions .action-button.reviews {
+    background-color: #d35400; /* Darker orange */
+    border-color: #d35400;
+}
+
+.admin-main-content .quick-actions .action-button.movies {
+    background-color: #1abc9c; /* Teal for Movies */
+    border-color: #1abc9c;
+}
+[data-theme='dark'] .admin-main-content .quick-actions .action-button.movies {
+    background-color: #16a085; /* Darker teal */
+    border-color: #16a085;
+}
+
+.admin-main-content .quick-actions .action-button.add-new { /* For "Add New Movie" */
+    background-color: var(--button-primary-bg); /* Use primary button color */
+    border-color: var(--button-primary-bg);
+}
+/* If you want to add icons (Example using Font Awesome - you'd need to include FA library) */
+
+.admin-main-content .quick-actions .action-button i {
+    margin-right: 0.75rem;
+    font-size: 1.2em;
+    width: 20px; /* To ensure icons are not too big */
+    text-align: center;
+}
+.admin-main-content .quick-actions .action-button span {
+    margin-right: 0.75rem;
+    font-size: 1.2em;
+    width: 20px; /* To ensure icons are not too big */
+    text-align: center;
+}
+
+
+/* To ensure text is readable if icons are added and text needs more space */
+.admin-main-content .quick-actions .action-button span.button-text { /* Add <span> around text in HTML */
+    flex-grow: 1;
+}
+
+/* ======================================
+   ADMIN MANAGE MOVIES & REVIEWS (Tables) ENHANCEMENTS
+   ====================================== */
+.admin-main-content .manage-movies-header, /* For admin_movies.php */
+.admin-main-content .manage-reviews-header { /* Add to admin_reviews.php if needed */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+.admin-main-content .manage-movies-header h3,
+.admin-main-content .manage-reviews-header h3 {
+    margin: 0;
+    font-size: 1.6rem;
+}
+.admin-main-content .manage-movies-header .btn-primary {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+}
+
+.admin-main-content .table .movie-image-thumbnail { /* For admin_movies.php table */
+    width: 60px;
+    padding: 0.5rem !important;
+}
+.admin-main-content .table .movie-image-thumbnail img {
+    width: 50px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 3px;
+    display: block;
+    border: 1px solid var(--border-color);
+}
+.admin-main-content .table .movie-image-thumbnail .no-pic-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 75px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    opacity: 0.6;
+    font-size: 0.8rem;
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
+.admin-main-content .table td details { cursor: pointer; }
+.admin-main-content .table td details summary { list-style: none; /* Hide default triangle in some browsers */ }
+.admin-main-content .table td details summary::-webkit-details-marker { display: none; } /* Hide default triangle in WebKit */
+.admin-main-content .table td details p { margin-top: 0.5em; padding-left: 1em; font-size: 0.9em; opacity: 0.85;}
+
+
+.table-responsive-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 0.25rem;
+    margin-bottom: 1.5rem;
+}
+.admin-main-content .table-responsive-wrapper .table {
+    margin-bottom: 0;
+    border: none;
+}
+
+/* Admin Action Links in tables */
+.admin-main-content .table .action-links .btn {
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+}
+.btn-approve { background: #27ae60; border-color: #27ae60; }
+.btn-reject { background: #e74c3c; border-color: #e74c3c; }
+.btn-edit { background: #3498db; border-color: #3498db; }
+.btn-delete { background: var(--button-secondary-bg); border-color: var(--button-secondary-bg); }
+
+
+/* ======================================
+   ADMIN MOVIE FORM ENHANCEMENTS
+   ====================================== */
+.admin-main-content .movie-form .form-group {
+    margin-bottom: 1.25rem;
+}
+.admin-main-content .movie-form .form-group label {
+    font-weight: 500;
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+}
+.admin-main-content .movie-form .current-image-preview img {
+    max-width: 120px;
+    height: auto;
+    margin-top: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid var(--border-color);
+}
+.admin-main-content .movie-form .form-actions {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+
+/* Toggle Switch Styling (Theme Toggle) - Your existing styles are good */
+.theme-container {
+  position: fixed;
+  top: 15px; /* Adjusted slightly */
+  right: 15px;
+  z-index: 10000; /* Ensure it's on top of everything */
+}
+
+
+.theme-switch { position: relative; display: inline-block; width: 60px; height: 34px; }
+.theme-switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc; border-radius: 34px; transition: 0.4s;
+}
+.slider:before {
+  position: absolute; content: ""; height: 26px; width: 26px;
+  left: 4px; bottom: 4px; background-color: white;
+  transition: 0.4s; border-radius: 50%;
+}
+input:checked + .slider { background-color: #0fbcf9; }
+[data-theme='dark'] input:checked + .slider { background-color: var(--button-primary-bg); }
+input:checked + .slider:before { transform: translateX(26px); }
+.slider::after {
+  content: "🌞"; position: absolute; left: 6px; top: 50%;
+  transform: translateY(-50%); font-size: 16px; opacity: 1; transition: opacity 0.4s, transform 0.4s;
+}
+input:checked + .slider::after {
+  content: "🌙"; left: 32px; opacity: 1;
+}
+[data-theme='dark'] .slider { background-color: #555; }
+[data-theme='dark'] .slider:before { background-color: #333; }
+
+/* Ensure body padding doesn't conflict with sticky top-bar or fixed theme-container */
+body {
+    /* ... existing body styles ... */
+    padding-top: 70px; /* Example: If top-bar is around 50-60px high + some margin */
+}
+.top-bar {
+    /* ... existing top-bar styles ... */
+    margin: 0; /* Remove negative margins if body has padding-top */
+    border-radius: 0; /* Full width for sticky bar */
+}
+.admin-main-content {
+    /* ... existing admin-main-content styles ... */
+    padding-top: calc(1.5rem + 60px); /* If admin-header is sticky, adjust this */
+}
+
+
+.btn-watchlist {
+    
+    padding: 0.5rem 0.8rem; /* Smaller button */
+    font-size: 0.9rem;
+}
+.btn-watchlist .watchlist-icon {
+    margin-right: 5px;
+    /* Consider using an actual icon font or SVG for better icons */
+}
+
+/* Style for remove button on watchlist page, if using .btn-delete */
+.movie-card-content .btn-delete.btn-watchlist-remove { /* More specific for remove on card */
+    width: 100%;
+    margin-top: 0.5rem;
+}
